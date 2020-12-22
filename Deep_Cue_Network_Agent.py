@@ -1,3 +1,21 @@
+"""
+Deep_Cue_Network_Agent class: Last updated on 12/21/2020 at 8:43 PM
+This class consists of six different essential methods.
+
+__init__ : Instantiates a Deep_Cue_Network_Agent Object
+
+build_model: This method creates globally pooled version of the VGG-16 architecture.
+
+update_replay_memory: Updates the replay memory
+
+train : the train method updates the q-values for the DQN algorithm.
+
+predict_qs: gets the q-values using the neural network's .predict() method after reshaping and processing the input first.
+
+thread_loop: creates an infinite loop that acts as a thread for the purposes of aiding the training process, 
+such that the agent would be predicting and fitting simultaneously and it can only be stopped through a termination flag that is triggered 
+by the end of the training process.
+"""
 class Deep_Cue_Network_Agent:
     def __init__(self):
         # Target model and fitment model.
