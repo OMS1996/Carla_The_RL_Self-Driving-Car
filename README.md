@@ -54,7 +54,7 @@ jobs:
 </details>
 
 <details>
-  <summary>Vanilla DQN Algorithm</summary>
+  <summary>DQN Algorithm pseudocode</summary>
 
   # DQN
 How the DQN algorithm generally looks like is as follows: courtesy of @deeplizard's website: https://deeplizard.com/learn/video/0bt0SjbS3xc
@@ -104,23 +104,23 @@ If you are experiencing any bugs, please email me at omarmoh.said@yahoo.com
 ### Resources
 Following are the list of some popular blogging platforms and their RSS feed urls:
 
-| Name | Feed URL | Comments | Example |
-|--------|--------|--------|--------|
-| [Dev.to](https://dev.to/) | `https://dev.to/feed/username` | Replace username with your own username | https://dev.to/feed/gautamkrishnar |
-| [Wordpress](https://wordpress.org/) | `https://www.example.com/feed/` | Replace with your own blog url | https://www.gautamkrishnar.com/feed/ |
-| [Medium](https://medium.com/) | `https://medium.com/feed/@username` | Replace @username with your Medium username | https://medium.com/feed/@khaosdoctor |
-| [Stackoverflow](https://stackoverflow.com/) | `https://stackoverflow.com/feeds/user/userid` | Replace with your StackOverflow [UserId](https://meta.stackexchange.com/questions/98771/what-is-my-user-id/111130#111130) | https://stackoverflow.com/feeds/user/5283532 |
-| [StackExchange](https://stackexchange.com/) | `https://subdomain.stackexchange.com/feeds/user/userid` | Replace with your StackExchange [UserId](https://meta.stackexchange.com/questions/98771/what-is-my-user-id/111130#111130) and sub-domain | https://devops.stackexchange.com/feeds/user/15 |
-| [Ghost](https://ghost.org/) | `https://www.example.com/rss/` | Replace with your own blog url | https://blog.codinghorror.com/rss/ |
-| [Drupal](https://www.drupal.org/) | `https://www.example.com/rss.xml` | Replace with your own blog url | https://www.arsenal.com/rss.xml |
+| Name | Feed URL | Comments 
+|--------|--------|--------
+| [Dev.to](https://dev.to/) | `https://dev.to/feed/username` | Replace username with your own username 
+| [Wordpress](https://wordpress.org/) | `https://www.example.com/feed/` | Replace with your own blog url 
+| [Medium](https://medium.com/) | `https://medium.com/feed/@username` | Replace @username with your Medium username 
+| [Stackoverflow](https://stackoverflow.com/) | `https://stackoverflow.com/feeds/user/userid` (https://meta.stackexchange.com/questions/98771/what-is-my-user-id/111130#111130) | https://stackoverflow.com/feeds/user/5283532 |
+| [StackExchange](https://stackexchange.com/) | `https://subdomain.stackexchange.com/feeds/user/userid` (https://meta.stackexchange.com/questions/98771/what-is-my-user-id/111130#111130) and sub-domain | https://devops.stackexchange.com/feeds/user/15 |
+| [Ghost](https://ghost.org/) | `https://www.example.com/rss/` | Replace with your own blog url 
+| [Drupal](https://www.drupal.org/) | `https://www.example.com/rss.xml` | Replace with your own blog url 
 | [Youtube Playlists](https://www.youtube.com) | `https://www.youtube.com/feeds/videos.xml?playlist_id=playlistId` | Replace `playlistId` with your own Youtube playlist id | https://www.youtube.com/feeds/videos.xml?playlist_id=PLJNqgDLpd5E69Kc664st4j7727sbzyx0X |
 | [Youtube Channel Video list](https://www.youtube.com) |  `https://www.youtube.com/feeds/videos.xml?channel_id=channelId` | Replace `channelId` with your own Youtube channel id | https://www.youtube.com/feeds/videos.xml?channel_id=UCDCHcqyeQgJ-jVSd6VJkbCw |
-| [Anchor.fm Podcasts](https://anchor.fm/) | `https://anchor.fm/s/podcastId/podcast/rss` | You can get the rss feed url of a podcast by following [these](https://help.anchor.fm/hc/en-us/articles/360027712351-Locating-your-Anchor-RSS-feed) instructions | https://anchor.fm/s/1e784a38/podcast/rss |
+| [Anchor.fm Podcasts](https://anchor.fm/) | `https://anchor.fm/s/podcastId/podcast/rss` | You can get the rss feed url of a podcast by following [these](https://help.anchor.fm/hc/en-us/articles/360027712351-Locating-your-Anchor-RSS-feed) instructions 
 | [Hashnode](https://hashnode.com/) | `https://@username.hashnode.dev/rss.xml` | Replace @username with your Hashnode username | https://polilluminato.hashnode.dev/rss.xml |
 | [Google Podcasts](https://podcasts.google.com/) | `https://podcasts.google.com/feed/channelId` | Replace `channelId` with your Google podcast channel Id | https://podcasts.google.com/feed/aHR0cHM6Ly9mZWVkcy5zb3VuZGNsb3VkLmNvbS91c2Vycy9zb3VuZGNsb3VkOnVzZXJzOjYyOTIxMTkwL3NvdW5kcy5yc3M= |
 | [Reddit](https://www.reddit.com/) | `http://www.reddit.com/r/topic/.rss` | You can create an RSS feed by adding '.rss' to the end of an existing Reddit URL. Replace `topic` with SubReddit topic that interest you or localized to you.| http://www.reddit.com/r/news/.rss |
 | [Analytics India Magazine](https://analyticsindiamag.com/) | `https://analyticsindiamag.com/author/author_name/feed/` | Replace `author_name` with your name | https://analyticsindiamag.com/author/kaustubhgupta1828gmail-com/feed/ |
-| [Feedburner](https://feedburner.com/) | `https://feeds.feedburner.com/feed_address` | Replace `feed_address` with your Feedburner feed address | https://feeds.feedburner.com/darkwood-fr/blog |
+| [Feedburner](https://feedburner.com/) | `https://feeds.feedburner.com/feed_address` | Replace `feed_address` with your Feedburner feed address 
 
 ### Thanks 
 - Director of my program Professor.Andy Catlin
