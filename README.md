@@ -26,23 +26,22 @@ Created this project as part of my Master's thesis for the Year 2020
 <!-- BLOG-POST-LIST:START -->
 <!-- BLOG-POST-LIST:END -->
 ```
-- Create a folder named `.github` and create a `workflows` folder inside it if it doesn't exist.
-- Create a new file named `blog-post-workflow.yml` with the following contents inside the workflows folder:
-```yaml
-name: Latest blog post workflow
-on:
-  schedule: # Run workflow automatically
-    - cron: '0 * * * *' # Runs every hour, on the hour
-  workflow_dispatch: # Run workflow manually (without waiting for the cron to be called), through the Github Actions Workflow page directly
-jobs:
-  update-readme-with-blog:
-    name: Update this repo's README with latest blog posts
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: gautamkrishnar/blog-post-workflow@master
-        with:
-          feed_list: "https://dev.to/feed/gautamkrishnar,https://www.gautamkrishnar.com/feed/"
+Initialize replay memory capacity.
+Initialize the network with random weights.
+For each episode:
+Initialize the starting state.
+For each time step:
+Select an action.
+Via exploration or exploitation
+Execute selected action in an emulator.
+Observe reward and next state.
+Store experience in replay memory.
+Sample random batch from replay memory.
+Preprocess states from batch.
+Pass batch of preprocessed states to policy network.
+Calculate loss between output Q-values and target Q-values.
+Requires a second pass to the network for the next state
+Gradient descent updates weights in the policy network to minimize loss."
 ```
 - Replace the above url list with your own rss feed urls. See [popular-sources](#popular-sources) for a list of common RSS feed urls.
 - Commit and wait for it to run automatically or you can also trigger it manually to see the result instantly. To trigger the workflow manually, please follow the steps in the [video](https://www.youtube.com/watch?v=ECuqb5Tv9qI&t=272s).
