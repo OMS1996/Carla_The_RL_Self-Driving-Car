@@ -13,15 +13,10 @@ Created this project as part of my Master's thesis for the Year 2020
 - Download anaconda
 - Create a virtual environment: conda create -n envname python=3.7 anaconda
 - pip install requirements.txt
+- Download the Carla Repo from https://github.com/carla-simulator/carla
 - Once everything is setup you must ensure that you have that you have CarlaUE4.exe running. or if you are on linux run the command ./CarlaUE4.sh
 
 
-
-
-
-
-
-111111
 # DQN
 How the DQN algorithm generally looks like is as follows: courtesy of @deeplizard's website: https://deeplizard.com/learn/video/0bt0SjbS3xc
 <!-- BLOG-POST-LIST:START -->
@@ -50,7 +45,7 @@ How the DQN algorithm generally looks like is as follows: courtesy of @deeplizar
 ### Options
 This workflow has additional options that you can use to customize it for your use case. The following are the list of options available:
 
-| Option | Default Value 
+| ID | Resource 
 |--------|--------
 | `feed_list` | `""` | 
 | `max_post_count` | `5` | 
@@ -59,6 +54,8 @@ This workflow has additional options that you can use to customize it for your u
 | `comment_tag_name` | `BLOG-POST-LIST` | 
 | `disable_sort` | `false` | 
 | `template` | `default` |**Supported variables** <ul><li>`$title`: Title of the post</li><li>`$url`: URL of the post</li><li>`$description`: Description of the post</li><li>`$newline`: Inserts a newline</li><li>`$date`: Inserts the post date based on the `date_format` specified</li><li>`$randomEmoji`: Allow you to use random emojis in the post, pass emojis as the parameter to chose one of it randomly in each post item. Eg: `$randomEmoji(💯,🔥,💫,🚀,🌮)`. See the [issue comment](https://github.com/gautamkrishnar/blog-post-workflow/issues/29#issuecomment-699622596) for more details</li>
+
+111111111111111111
 
 ### Advanced usage examples
 #### StackOverflow example
