@@ -77,9 +77,10 @@ As you can see at the beginning it is not very smart but slowly but surely it be
 
 #### Potential improvements.
 - [ ] Incoporate dynamic weather for a wider range of data. ( Level: Easy)
-- [ ] Implement prioritized experience replay ( Level: Medium)
+- [ ] Implement prioritized experience replay ( Level: Medium) https://arxiv.org/abs/1511.05952
 - [ ] Create a perception system (Level: Hard)
-- [ ] Attempt an improved DDQN
+- [ ] Attempt an improved DDQN (https://arxiv.org/abs/1509.06461)
+- [ ] Dueling Network https://arxiv.org/abs/1511.06581
 - [ ] Implement PPO 
 - [ ] Implement A3C
 - [ ] Create a model based self-driving car (Level: Hard)
@@ -94,22 +95,23 @@ Following are the list of some popular blogging platforms and their RSS feed url
 
 | Name | Comments
 |--------|--------
-| [Udacity](https://www.udacity.com/course/reinforcement-learning--ud600) | `https://github.com/udacity/deep-reinforcement-learning` 
-| [Deep Learning Illustrated]() | `https://www.udacity.com/course/reinforcement-learning--ud600` 
-| [Introduction to Reinforcement learning An Introduction](https://medium.com/) | `https://medium.com/feed/@username` 
-| [St
-](https://stackoverflow.com/) | `https://stackoverflow.com/feeds/user/userid` (https://meta.stackexchange.com/questions/98771/what-is-my-user-id/111130#111130) |
-| [Unity ML-agents](https://stackexchange.com/) | `https://subdomain.stackexchange.com/feeds/user/userid` (https://meta.stackexchange.com/questions/98771/what-is-my-user-id/111130#111130) and sub-domain
-| [Grokking deep Reinforcement learning](https://ghost.org/) | `https://www.example.com/rss/` 
-| [Drupal](https://www.drupal.org/) | `https://www.example.com/rss.xml` 
-| [Youtube Playlists](https://www.youtube.com) | `https://www.youtube.com/feeds/videos.xml?playlist_id=playlistId` | Replace `playlistId` with your own Youtube playlist id 
-| [David Silver Course Lecture 1](https://www.youtube.com) |  `https://www.youtube.com/feeds/videos.xml?channel_id=channelId` | Replace `channelId` with your own Youtube channel id 
-| [Anchor.fm Podcasts](https://anchor.fm/) | `https://anchor.fm/s/podcastId/podcast/rss` (https://help.anchor.fm/hc/en-us/articles/360027712351-Locating-your-Anchor-RSS-feed) instructions 
-| [Hashnode](https://hashnode.com/) | `https://@username.hashnode.dev/rss.xml` | Replace @username with your Hashnode username 
-| [Google Podcasts](https://podcasts.google.com/) | `https://podcasts.google.com/feed/channelId` 
-| [Reddit](https://www.reddit.com/) | `http://www.reddit.com/r/topic/.rss`  with SubReddit topic that interest you or localized to you.
-| [Analytics India Magazine](https://analyticsindiamag.com/) | `https://analyticsindiamag.com/author/author_name/feed/` | Replace `author_name` with your name 
-| [Feedburner](https://feedburner.com/) | `https://feeds.feedburner.com/feed_address` 
+| [Udacity Deep reinforcement learning](https://www.udacity.com/course/reinforcement-learning--ud600) | `https://github.com/udacity/deep-reinforcement-learning` 
+| [Human-level control through deep reinforcement
+learning](http://files.davidqiu.com//research/nature14236.pdf) | `http://files.davidqiu.com//research/nature14236.pdf` | http://files.davidqiu.com//research/nature14236.pdf
+| [Issues in Using Function Approximation for Reinforcement Learning](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.73.3097&rep=rep1&type=pdf) | `http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.73.3097&rep=rep1&type=pdf` 
+| [Deep Learning Illustrated](https://www.amazon.com/Deep-Learning-Illustrated-Intelligence-Addison-Wesley/dp/0135116694) | `https://www.amazon.com/Deep-Learning-Illustrated-Intelligence-Addison-Wesley/dp/0135116694` 
+| [Introduction to Reinforcement learning An Introduction](http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.32.7692) | `http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.32.7692` 
+| [Unity ML-agents](https://github.com/Unity-Technologies/ml-agents) | `https://github.com/Unity-Technologies/ml-agents` (https://meta.stackexchange.com/questions/98771/what-is-my-user-id/111130#111130) and sub-domain
+| [Grokking deep Reinforcement learning](https://www.manning.com/books/grokking-deep-reinforcement-learning) | `https://www.manning.com/books/grokking-deep-reinforcement-learning` 
+| [Python Hands On machine learning](https://www.amazon.com/Hands-Machine-Learning-Scikit-Learn-TensorFlow/dp/1491962291) | `https://www.amazon.com/Hands-Machine-Learning-Scikit-Learn-TensorFlow/dp/1491962291` 
+| [David Silver Course Lecture 1](https://www.youtube.com/watch?v=2pWv7GOvuf0) | `https://www.youtube.com/watch?v=2pWv7GOvuf0` | Replace `playlistId` with your own Youtube playlist id 
+| [Stanford Course Lecture 1](https://www.youtube.com) |  `https://www.youtube.com/feeds/videos.xml?channel_id=channelId` | Replace `channelId` with your own Youtube channel id 
+instructions 
+| [Helpful Github Repo](https://github.com/Parsa33033/Deep-Reinforcement-Learning-DQN) | `https://github.com/Parsa33033/Deep-Reinforcement-Learning-DQN` 
+| [sentdex](https://www.youtube.com/playlist?list=PLQVvvaa0QuDezJFIOU5wDdfy4e9vdnx-7) | `https://www.youtube.com/playlist?list=PLQVvvaa0QuDezJFIOU5wDdfy4e9vdnx-7` 
+| [MIT course lecture 1](https://anchor.fm/) | `https://anchor.fm/s/podcastId/podcast/rss` (https://help.anchor.fm/hc/en-us/articles/360027712351-Locating-your-Anchor-RSS-feed) 
+| [Helpful Github Repo](https://github.com/Parsa33033/Deep-Reinforcement-Learning-DQN) | `https://github.com/Parsa33033/Deep-Reinforcement-Learning-DQN` 
+| [Simple Reinforcement Learning with Tensorflow Part 0: Q-Learning with Tables and Neural Networks](https://medium.com/emergent-future/simple-reinforcement-learning-with-tensorflow-part-0-q-learning-with-tables-and-neural-networks-d195264329d0) | `https://medium.com/emergent-future/simple-reinforcement-learning-with-tensorflow-part-0-q-learning-with-tables-and-neural-networks-d195264329d0` 
 
 ### Thanks 
 - Director of my program Professor.Andy Catlin
