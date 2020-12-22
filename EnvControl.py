@@ -1,52 +1,23 @@
-# -*- coding: utf-8 -*-
+"""Last modified on 12/2020
+The EnvControl class controls the environment. It manages a plethora of different aspects of the environment and acts as an umpire in regards to the relationship between the car and the environment.
+Some of the things, the class handles:
+Server/Client relations (the car and the environment).
+Spawning a car of model type tesla (The agent) at random location in carla environment [Every time it restarts].
+Provides the means for manual control.
+Attaching the camera to the front of the car and preproccessing the images it recieves into RGB format.
+One step dynamics: Meaning it defines how the car should take a step in its environment through a governing body of rules.
+Collision detection.
+Destroys actors at the end of each episode.
 """
-Created on Wed Dec  2 19:10:08 2020
-
-@author: omarm
-"""
-# Imports
-import math
-import numpy as np
-import pandas as pd
-import cv2
-from collections import deque
-import tensorflow as tf
-from keras.layers import Dense, GlobalMaxPool2D
-from keras.optimizers import Adam
-from keras.models import Model
-from keras.applications.vgg16 import VGG16
-import glob
-import os
-import sys
-from tqdm import tqdm
-import random
-import time
-from threading import Thread
-
-
-
-
-# Getting the necassary files through glob
-try:
-    sys.path.append(glob.glob('../carla/dist/carla-*%d.%d-%s.egg' % (
-        sys.version_info.major,
-        sys.version_info.minor,
-        'win-amd64' if os.name == 'nt' else 'linux-x86_64'))[0])
-except IndexError:
-    pass
-
-# Importing the carla API Classes.
-import carla
 
 class EnvControl:
  
-    
     # Full steering amount
     STEER_AMT = 0.7
     
     # The size of the frame.
-    im_width = 640
-    im_height = 480
+    im_width = 500
+    im_height = 500
     
     # The values coming in from the front camera after being processed.
     front_camera = None
@@ -63,7 +34,7 @@ class EnvControl:
         self.blueprint_library = self.world.get_blueprint_library()
         self.model_3 = self.blueprint_library.filter("model3")[0]
         # The duration of the episode
-        self.SECONDS_PER_EPISODE = 15
+        self.SECONDS_PER_EPISODE = 10
     
     def RESTART(self):
         # recording collisions
@@ -91,7 +62,7 @@ class EnvControl:
         # relative to the car location putting the camera in the front area
         # Attaching it and assigning it
         # Putting it into the actor list
-        # All the data coming into that sensor, get the RGB version of it
+        # All the data coming into that sensor, get the RGB version of it.
         transform = carla.Transform(carla.Location(x=2.5, z=0.7))
         self.sensor = self.world.spawn_actor(self.rgb_cam, transform, attach_to=self.vehicle)
         self.actor_list.append(self.sensor)
@@ -122,11 +93,6 @@ class EnvControl:
         
         return self.front_camera # Returning what the sensor sees.
     
-    # Book keeping
-    def collision_data(self, event):
-        self.collision_hist.append(event)
-    
-    #
     def process_img(self, image):
         raw = np.array(image.raw_data) # convert to an array
         reshaped_image = raw.reshape((self.im_height, self.im_width, 4)) # was flattened, so we're going to shape it.
@@ -134,7 +100,11 @@ class EnvControl:
         cv2.imshow("", rgb_image)
         cv2.waitKey(1)
         self.front_camera = rgb_image
-
+    
+    # Book keeping
+    def collision_data(self, event):
+        self.collision_hist.append(event)
+    
     def step(self, action):
         '''
         - ALL actions right,left,forward
@@ -142,18 +112,19 @@ class EnvControl:
         
         '''
         if action == 0:
-            self.vehicle.apply_control(carla.VehicleControl(throttle = 0.7, steer = -1*self.STEER_AMT))
+            self.vehicle.apply_control(carla.VehicleControl(throttle = 0.7, steer = - 1 * self.STEER_AMT)) # left
         elif action == 1:
-            self.vehicle.apply_control(carla.VehicleControl(throttle = 1.0, steer= 0))
+            self.vehicle.apply_control(carla.VehicleControl(throttle = 0.5, steer = 0.0)) # Half-throttle
         elif action == 2:
-            self.vehicle.apply_control(carla.VehicleControl(throttle = 0.7, steer = 1*self.STEER_AMT))
+            self.vehicle.apply_control(carla.VehicleControl(throttle = 1.0, steer= 0)) # Full-throttle
         elif action == 3:
-            self.vehicle.apply_control(carla.VehicleControl(throttle = 0.1, steer = 0.0, reverse = True))
+            self.vehicle.apply_control(carla.VehicleControl(throttle = 0.7, steer = 1 * self.STEER_AMT)) # right
+            
         
         # Getting the velocity
         v = self.vehicle.get_velocity()
         
-        # Getting the resultant velocity
+        # Getting the resultant velocity meter/sec
         kmh = int(3.6 * math.sqrt(v.x**2 + v.y**2 + v.z**2))
         
         ## The Reward Shaping
@@ -162,12 +133,15 @@ class EnvControl:
         if len(self.collision_hist) != 0:
             done = True
             reward = -100
-        elif kmh < 60:
+        elif kmh < 35:
             done = False
-            reward = -10
+            reward = -15
+        elif kmh > 120:
+            done = False
+            reward = - 10
         else:
             done = False
-            reward = 10
+            reward = 15
         # Is the episode over already ?
         if self.episode_start + self.SECONDS_PER_EPISODE < time.time():
             done = True
