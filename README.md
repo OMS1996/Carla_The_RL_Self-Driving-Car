@@ -5,13 +5,14 @@ For more information about carla please visit the following Links:
 - https://carla.org/
 - https://github.com/carla-simulator/carla
 
-# Motivation
-Created this project as part of my Master's thesis for the Year 2020
 
-# Blog post workflow  [![Build and test](https://github.com/gautamkrishnar/blog-post-workflow/workflows/Build%20and%20test/badge.svg?branch=master)](https://github.com/gautamkrishnar/blog-post-workflow/actions?query=workflow%3A%22Build+and+test%22)
+
+# Blog post workflow  [![Build and test](https://github.com/carla-simulator/carla)](https://github.com/carla-simulator/carla)
 
 ![preview](https://github.com/OMS1996/Carla_The_RL_Self-Driving-Car/blob/main/Images/carla_desktop0.PNG?raw=true)
 
+# Motivation
+Created this project as part of my Master's thesis for the Year 2020
 
 ### How to use
 - Go to your repository
