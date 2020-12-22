@@ -7,7 +7,10 @@ For more information about carla please visit the following Links:
 ![preview](https://github.com/OMS1996/Carla_The_RL_Self-Driving-Car/blob/main/Images/carla_desktop0.PNG?raw=true)
 
 # Motivation
-Created this project as part of my Master's thesis for the Year 2020
+Created this project as part of my Master's Final project for the Year 2020 and a passion for reinforcement learning.
+
+This video from openAI really inspired me: https://www.youtube.com/watch?v=kopoLzvh5jY
+
 
 ### How to use this repo
 - Download anaconda
@@ -16,47 +19,28 @@ Created this project as part of my Master's thesis for the Year 2020
 - Download the Carla Repo from https://github.com/carla-simulator/carla
 - Once everything is setup you must ensure that you have that you have CarlaUE4.exe running. or if you are on linux run the command ./CarlaUE4.sh
 
-
-### Reinforcement Learning 
-![preview](https://github.com/OMS1996/Carla_The_RL_Self-Driving-Car/blob/main/Images/rl_env1.PNG)
+# What is in this repo
+- Code for a reinforcement learning self-driving car.
+- A step by step code breakdown in the form of a jupyter notebook.
+- A modularized version of the code.
+- Powerpoint presentation.
+- Data and Graphs.
+- A Readme with detailed instructions.
 
 ### Carla
+
 ![preview](https://github.com/OMS1996/Carla_The_RL_Self-Driving-Car/blob/main/Images/carla_look1.PNG?raw=true)
 
-# StackOverflow Activity
-<!-- STACKOVERFLOW:START -->
-<!-- STACKOVERFLOW:END -->
-```
-- Create `stack-overflow-workflow.yml` in your `workflows` folder with the following contents, replace **4214976** with your StackOverflow [user id](https://meta.stackexchange.com/questions/98771/what-is-my-user-id/111130#111130):
-```yaml
-name: Latest stack overflow activity
-on:
-  schedule:
-    # Runs every 5 minutes
-    - cron: '*/5 * * * *'
+This is how carla looks like from the inside. It is an extremely beautiful environment.
 
-jobs:
-  update-readme-with-stack-overflow:
-    name: Update this repo's README with latest activity from StackOverflow
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: gautamkrishnar/blog-post-workflow@master
-        with:
-          comment_tag_name: "STACKOVERFLOW"
-          commit_message: "Updated readme with the latest stackOverflow data"
-          feed_list: "https://stackoverflow.com/feeds/user/4214976"
-```
-<details>
-  <summary>See the result!</summary>
+### Reinforcement Learning 
+The main idea in RL is that you have an agent which is an "intelligent being" the interacts with an environment by means of taking actions and then receives feedback from the environment to indicate whether the agent has done well or bad. Like raising a  child , if he does well in school you encourage(REWARD) him if he doesn’t then you perhaps ground him (Penalize). and your child starts to adjust his behavior accordingly.
 
-  ![advanced](https://user-images.githubusercontent.com/8397274/88197889-b727ff80-cc60-11ea-8e4a-b1fbd8dd9d06.png)
-</details>
+Note that a +ve reward indicates a reward and a -ve reward indicates penalty.
 
-<details>
-  <summary>DQN Algorithm pseudocode</summary>
+![preview](https://github.com/OMS1996/Carla_The_RL_Self-Driving-Car/blob/main/Images/rl_env1.PNG)
 
-  # DQN
+# DQN
 How the DQN algorithm generally looks like is as follows: courtesy of @deeplizard's website: https://deeplizard.com/learn/video/0bt0SjbS3xc
 <!-- BLOG-POST-LIST:START -->
 <!-- BLOG-POST-LIST:END -->
@@ -78,10 +62,13 @@ How the DQN algorithm generally looks like is as follows: courtesy of @deeplizar
       Requires a second pass to the network for the next state
     9.Gradient descent updates weights in the policy network to minimize loss."
 ```
+
+<details>
+  <summary>Results!</summary>
+
+  ![advanced](https://.png)
 </details>
 
-### Examples 
-* [My own GitHub profile readme](https://github.com/OMS1996) 
 
 ### Demo video
 Here is the first few minutes of the training process for self driving car.
@@ -126,6 +113,10 @@ Following are the list of some popular blogging platforms and their RSS feed url
 - Director of my program Professor.Andy Catlin
 - Dean Paul Russo
 - My supervisor Dr. Wonjun
+
+
+### My Github account
+* [My own GitHub profile readme](https://github.com/OMS1996) 
 
 ### Liked it?
 Hope you liked this project, don't forget to give it a star ⭐
