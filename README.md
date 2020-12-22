@@ -63,16 +63,17 @@ How the DQN algorithm generally looks like is as follows: courtesy of @deeplizar
     9.Gradient descent updates weights in the policy network to minimize loss."
 ```
 
+
+### Demo video ( First few episodes )
+Here is the first few minutes of the training process for self driving car.
+Please see the [video](https://www.youtube.com/watch?v=oAbDeb887_U) by [@OMS1996](https://github.com/OMS1996).
+As you can see at the beginning it is not very smart but slowly but surely it begins to get smarter and smarter.
+
 <details>
   <summary>Results!</summary>
 
   ![advanced](https://.png)
 </details>
-
-
-### Demo video
-Here is the first few minutes of the training process for self driving car.
-Please see the [video](https://www.youtube.com/watch?v=oAbDeb887_U) by [@OMS1996](https://github.com/OMS1996).
 
 #### Potential improvements.
 - [ ] Incoporate dynamic weather for a wider range of data. ( Level: Easy)
