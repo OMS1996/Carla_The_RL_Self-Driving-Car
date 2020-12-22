@@ -6,9 +6,6 @@ For more information about carla please visit the following Links:
 - https://github.com/carla-simulator/carla
 
 
-
-# Blog post workflow  [![Build and test](https://github.com/carla-simulator/carla)](https://github.com/carla-simulator/carla)
-
 ![preview](https://github.com/OMS1996/Carla_The_RL_Self-Driving-Car/blob/main/Images/carla_desktop0.PNG?raw=true)
 
 # Motivation
