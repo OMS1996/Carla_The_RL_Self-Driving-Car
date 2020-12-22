@@ -43,12 +43,12 @@ How the DQN algorithm generally looks like is as follows: courtesy of @deeplizar
 - Commit and wait for it to run automatically or you can also trigger it manually to see the result instantly. To trigger the workflow manually, please follow the steps in the [video](https://www.youtube.com/watch?v=ECuqb5Tv9qI&t=272s).
 
 
-### Advanced usage examples
-#### StackOverflow example
-The following configuration allows you to show your latest StackOverflow activity along with your latest blog posts in the Github profile or project readme:
-- Follow the steps mentioned in the [how to use](#how-to-use) section
-- Add the following section to your **README.md** file, you can give whatever title you want. Just make sure that you use `<!-- STACKOVERFLOW:START --><!-- STACKOVERFLOW:END -->` in your readme. The workflow will replace this comment with the actual StackOverflow activity: 
-```markdown
+### Reinforcement Learning 
+![preview](https://github.com/OMS1996/Carla_The_RL_Self-Driving-Car/blob/main/Images/rl_env1.PNG)
+
+### Carla
+![preview](https://github.com/OMS1996/Carla_The_RL_Self-Driving-Car/blob/main/Images/carla_look1.PNG?raw=true)
+
 # StackOverflow Activity
 <!-- STACKOVERFLOW:START -->
 <!-- STACKOVERFLOW:END -->
@@ -101,11 +101,11 @@ Following are the list of some popular blogging platforms and their RSS feed url
 | [Feedburner](https://feedburner.com/) | `https://feeds.feedburner.com/feed_address` | Replace `feed_address` with your Feedburner feed address | https://feeds.feedburner.com/darkwood-fr/blog |
 
 ### Examples 
-* [My own GitHub profile readme](https://github.com/gautamkrishnar) - [YML File](https://github.com/gautamkrishnar/gautamkrishnar/blob/master/.github/workflows/blog-post-workflow.yml)
-* [Lucas Santos' GitHub profile readme](https://github.com/khaosdoctor) - [YML File](https://github.com/khaosdoctor/khaosdoctor/blob/main/.github/workflows/update-blog-posts.yml)
+* [My own GitHub profile readme](https://github.com/OMS1996) 
 
 ### Demo video
-Please see the [video](https://www.youtube.com/watch?v=ECuqb5Tv9qI) by [@codeSTACKr](https://github.com/codeSTACKr).
+Here is the first few minutes of the training process for self driving car.
+Please see the [video](https://www.youtube.com/watch?v=oAbDeb887_U) by [@OMS1996](https://github.com/OMS1996).
 
 ### Contributing
 Please see [CONTRIBUTING.md](CONTRIBUTING.md) for getting started with the contribution. Make sure that you follow [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) while contributing and engaging in the discussions. **When contributing, please first discuss the change you wish to make via an issue on this repository before making the actual change**.
