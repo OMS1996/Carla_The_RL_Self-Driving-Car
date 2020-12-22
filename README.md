@@ -17,32 +17,6 @@ Created this project as part of my Master's thesis for the Year 2020
 - Once everything is setup you must ensure that you have that you have CarlaUE4.exe running. or if you are on linux run the command ./CarlaUE4.sh
 
 
-# DQN
-How the DQN algorithm generally looks like is as follows: courtesy of @deeplizard's website: https://deeplizard.com/learn/video/0bt0SjbS3xc
-<!-- BLOG-POST-LIST:START -->
-<!-- BLOG-POST-LIST:END -->
-```
-1.Initialize replay memory capacity.
-2.Initialize the network with random weights.
-3.For each episode:
-  1.Initialize the starting state.
-  2.For each time step:
-    1.Select an action.
-      Via exploration or exploitation
-    2.Execute selected action in an emulator.
-    3.Observe reward and next state.
-    4.Store experience in replay memory.
-    5.Sample random batch from replay memory.
-    6.Preprocess states from batch.
-    7.Pass batch of preprocessed states to policy network.
-    8.Calculate loss between output Q-values and target Q-values.
-      Requires a second pass to the network for the next state
-    9.Gradient descent updates weights in the policy network to minimize loss."
-```
-- Replace the above url list with your own rss feed urls. See [popular-sources](#popular-sources) for a list of common RSS feed urls.
-- Commit and wait for it to run automatically or you can also trigger it manually to see the result instantly. To trigger the workflow manually, please follow the steps in the [video](https://www.youtube.com/watch?v=ECuqb5Tv9qI&t=272s).
-
-
 ### Reinforcement Learning 
 ![preview](https://github.com/OMS1996/Carla_The_RL_Self-Driving-Car/blob/main/Images/rl_env1.PNG)
 
@@ -77,6 +51,33 @@ jobs:
   <summary>See the result!</summary>
 
   ![advanced](https://user-images.githubusercontent.com/8397274/88197889-b727ff80-cc60-11ea-8e4a-b1fbd8dd9d06.png)
+</details>
+
+<details>
+  <summary>Vanilla DQN Algorithm</summary>
+
+  # DQN
+How the DQN algorithm generally looks like is as follows: courtesy of @deeplizard's website: https://deeplizard.com/learn/video/0bt0SjbS3xc
+<!-- BLOG-POST-LIST:START -->
+<!-- BLOG-POST-LIST:END -->
+```
+1.Initialize replay memory capacity.
+2.Initialize the network with random weights.
+3.For each episode:
+  1.Initialize the starting state.
+  2.For each time step:
+    1.Select an action.
+      Via exploration or exploitation
+    2.Execute selected action in an emulator.
+    3.Observe reward and next state.
+    4.Store experience in replay memory.
+    5.Sample random batch from replay memory.
+    6.Preprocess states from batch.
+    7.Pass batch of preprocessed states to policy network.
+    8.Calculate loss between output Q-values and target Q-values.
+      Requires a second pass to the network for the next state
+    9.Gradient descent updates weights in the policy network to minimize loss."
+```
 </details>
 
 ### Examples 
