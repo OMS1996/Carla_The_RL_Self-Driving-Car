@@ -1,10 +1,7 @@
+"""Last modified on on Thu Nov 19 12:40:15 2020
 """
-Last modified on on Thu Nov 19 12:40:15 2020
 
-""" 
 # Imports
-
-
 import math
 import numpy as np
 import pandas as pd
@@ -24,8 +21,6 @@ import time
 from threading import Thread
 
 
-
-
 # Getting the necassary files through glob
 try:
     sys.path.append(glob.glob('../carla/dist/carla-*%d.%d-%s.egg' % (
@@ -39,13 +34,11 @@ except IndexError:
 import carla
 
 ## GLOBAL VARIABLES
-
-
 very_start = time.time()
-# The frame dimesions.
-IM_WIDTH = 640
-IM_HEIGHT = 480
 
+# The frame dimesions.
+IM_WIDTH = 500
+IM_HEIGHT = 500
 
 # The minibatch size
 minibatch_size = 16
@@ -56,15 +49,14 @@ PREDICTION_BATCH_SIZE = 1
 # The size of the training batch.
 TRAINING_BATCH_SIZE = minibatch_size // 4
 
-
 # CNN archietecture
 MODEL_NAME = "VGG16_GlobalMax2DPool"
 
-
-MIN_REWARD = - 100 # -- revisit this
+# Lowest possible reward
+MIN_REWARD = - 100 
 
 # The number of episodes (NOT STEPS)
-EPISODES = 5
+EPISODES = 500
 
 # The discount rate from the bellman equation
 DISCOUNT = 0.997
@@ -73,7 +65,7 @@ DISCOUNT = 0.997
 # The probability of using the network increases over time
 # However it won't go below 0.001
 epsilon = 1
-EPSILON_DECAY = 0.9997
+EPSILON_DECAY = 0.997
 MIN_EPSILON = 0.001
 
 # Get rewards every
@@ -88,8 +80,8 @@ class EnvControl:
     STEER_AMT = 0.7
     
     # The size of the frame.
-    im_width = 640
-    im_height = 480
+    im_width = 500
+    im_height = 500
     
     # The values coming in from the front camera after being processed.
     front_camera = None
@@ -106,7 +98,7 @@ class EnvControl:
         self.blueprint_library = self.world.get_blueprint_library()
         self.model_3 = self.blueprint_library.filter("model3")[0]
         # The duration of the episode
-        self.SECONDS_PER_EPISODE = 15
+        self.SECONDS_PER_EPISODE = 10
     
     def RESTART(self):
         # recording collisions
@@ -165,11 +157,6 @@ class EnvControl:
         
         return self.front_camera # Returning what the sensor sees.
     
-    # Book keeping
-    def collision_data(self, event):
-        self.collision_hist.append(event)
-    
-    #
     def process_img(self, image):
         raw = np.array(image.raw_data) # convert to an array
         reshaped_image = raw.reshape((self.im_height, self.im_width, 4)) # was flattened, so we're going to shape it.
@@ -177,7 +164,11 @@ class EnvControl:
         cv2.imshow("", rgb_image)
         cv2.waitKey(1)
         self.front_camera = rgb_image
-
+    
+    # Book keeping
+    def collision_data(self, event):
+        self.collision_hist.append(event)
+    
     def step(self, action):
         '''
         - ALL actions right,left,forward
@@ -185,18 +176,19 @@ class EnvControl:
         
         '''
         if action == 0:
-            self.vehicle.apply_control(carla.VehicleControl(throttle = 0.7, steer = -1*self.STEER_AMT))
+            self.vehicle.apply_control(carla.VehicleControl(throttle = 0.7, steer = - 1 * self.STEER_AMT)) # left
         elif action == 1:
-            self.vehicle.apply_control(carla.VehicleControl(throttle = 1.0, steer= 0))
+            self.vehicle.apply_control(carla.VehicleControl(throttle = 0.5, steer = 0.0)) # Half-throttle
         elif action == 2:
-            self.vehicle.apply_control(carla.VehicleControl(throttle = 0.7, steer = 1*self.STEER_AMT))
-        #elif action == 3:
-            #self.vehicle.apply_control(carla.VehicleControl(throttle = 0.1, steer = 0.0, reverse = True))
+            self.vehicle.apply_control(carla.VehicleControl(throttle = 1.0, steer= 0)) # Full-throttle
+        elif action == 3:
+            self.vehicle.apply_control(carla.VehicleControl(throttle = 0.7, steer = 1 * self.STEER_AMT)) # right
+            
         
         # Getting the velocity
         v = self.vehicle.get_velocity()
         
-        # Getting the resultant velocity
+        # Getting the resultant velocity meter/sec
         kmh = int(3.6 * math.sqrt(v.x**2 + v.y**2 + v.z**2))
         
         ## The Reward Shaping
@@ -205,12 +197,15 @@ class EnvControl:
         if len(self.collision_hist) != 0:
             done = True
             reward = -100
-        elif kmh < 60:
+        elif kmh < 35:
             done = False
-            reward = -10
+            reward = -15
+        elif kmh > 120:
+            done = False
+            reward = - 10
         else:
             done = False
-            reward = 10
+            reward = 15
         # Is the episode over already ?
         if self.episode_start + self.SECONDS_PER_EPISODE < time.time():
             done = True
@@ -269,7 +264,7 @@ class Deep_Cue_Network_Agent:
         
         # setting the stage.
         model = Model(inputs = base_model.input, outputs=predictions)
-        model.compile(loss="mse", optimizer=Adam(lr=0.001), metrics=["accuracy"])
+        model.compile(loss="mse", optimizer=Adam(lr = 0.009), metrics=["accuracy"])
         
         return model
     
@@ -446,7 +441,7 @@ if __name__ == '__main__':
                     action = np.argmax(agent.predict_qs(current_state))
                 else:
                     # Get random action
-                    action = np.random.randint(0, 3)
+                    action = np.random.randint(0, 4)
                     # This takes no time, so we add a delay matching 10 FPS (prediction above takes longer)
                     time.sleep(1/10)
                     
@@ -534,20 +529,11 @@ if __name__ == '__main__':
     
     print()
     print()
+    total_time_from_start_to_finish = total_time_from_start_to_finish /(60*60)
     print("Time for the whole script to run is : ",total_time_from_start_to_finish)
     
     # Transfer the list of lists to pandas dataframe.
     df = pd.DataFrame(full_stat[1:], columns=full_stat[0])
     
     # Save the df
-    df.to_csv()
-
-                  
-                    
-                 
-
-                 
-                                       
-     
-                    
-                    
+    df.to_csv(f'Carla_Metrics_AccEpsilon__{int(time.time())}.csv')
