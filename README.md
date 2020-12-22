@@ -42,20 +42,6 @@ How the DQN algorithm generally looks like is as follows: courtesy of @deeplizar
 - Replace the above url list with your own rss feed urls. See [popular-sources](#popular-sources) for a list of common RSS feed urls.
 - Commit and wait for it to run automatically or you can also trigger it manually to see the result instantly. To trigger the workflow manually, please follow the steps in the [video](https://www.youtube.com/watch?v=ECuqb5Tv9qI&t=272s).
 
-### Options
-This workflow has additional options that you can use to customize it for your use case. The following are the list of options available:
-
-| ID | Resource 
-|--------|--------
-| `feed_list` | `""` | 
-| `max_post_count` | `5` | 
-| `readme_path` | `./README.md` |
-| `gh_token` | your GitHub token with repo scope |
-| `comment_tag_name` | `BLOG-POST-LIST` | 
-| `disable_sort` | `false` | 
-| `template` | `default` |**Supported variables** <ul><li>`$title`: Title of the post</li><li>`$url`: URL of the post</li><li>`$description`: Description of the post</li><li>`$newline`: Inserts a newline</li><li>`$date`: Inserts the post date based on the `date_format` specified</li><li>`$randomEmoji`: Allow you to use random emojis in the post, pass emojis as the parameter to chose one of it randomly in each post item. Eg: `$randomEmoji(💯,🔥,💫,🚀,🌮)`. See the [issue comment](https://github.com/gautamkrishnar/blog-post-workflow/issues/29#issuecomment-699622596) for more details</li>
-
-111111111111111111
 
 ### Advanced usage examples
 #### StackOverflow example
