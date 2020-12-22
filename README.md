@@ -91,7 +91,7 @@ As you can see at the beginning it is not very smart but slowly but surely it be
 If you are experiencing any bugs, please email me at omarmoh.said@yahoo.com
 
 ### Resources.
-Following are the list of some popular blogging platforms and their RSS feed urls:
+Following are some the sources that I used some are more important than others, but here they are:
 
 | Name | Comments
 |--------|--------
@@ -108,7 +108,7 @@ learning](http://files.davidqiu.com//research/nature14236.pdf) | `http://files.d
 | [Stanford Course Lecture 1](https://www.youtube.com) |  `https://www.youtube.com/feeds/videos.xml?channel_id=channelId` | Replace `channelId` with your own Youtube channel id 
 instructions 
 | [Helpful Github Repo](https://github.com/Parsa33033/Deep-Reinforcement-Learning-DQN) | `https://github.com/Parsa33033/Deep-Reinforcement-Learning-DQN` 
-| [sentdex](https://www.youtube.com/playlist?list=PLQVvvaa0QuDezJFIOU5wDdfy4e9vdnx-7) | `https://www.youtube.com/playlist?list=PLQVvvaa0QuDezJFIOU5wDdfy4e9vdnx-7` 
+| [sentdex](https://www.youtube.com/user/sentdex) | `https://www.youtube.com/user/sentdex` 
 | [MIT course lecture 1](https://anchor.fm/) | `https://anchor.fm/s/podcastId/podcast/rss` (https://help.anchor.fm/hc/en-us/articles/360027712351-Locating-your-Anchor-RSS-feed) 
 | [Helpful Github Repo](https://github.com/Parsa33033/Deep-Reinforcement-Learning-DQN) | `https://github.com/Parsa33033/Deep-Reinforcement-Learning-DQN` 
 | [Simple Reinforcement Learning with Tensorflow Part 0: Q-Learning with Tables and Neural Networks](https://medium.com/emergent-future/simple-reinforcement-learning-with-tensorflow-part-0-q-learning-with-tables-and-neural-networks-d195264329d0) | `https://medium.com/emergent-future/simple-reinforcement-learning-with-tensorflow-part-0-q-learning-with-tables-and-neural-networks-d195264329d0` 
