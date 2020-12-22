@@ -1,8 +1,3 @@
-"""
-Created on Wed Dec  2 19:10:09 2020
-
-@author: omarm
-"""
 # Imports
 import math
 import numpy as np
@@ -22,7 +17,9 @@ import random
 import time
 from threading import Thread
 
-
+# The two other scripts ( two classes)
+import EnvControl
+import Deep_Cue_Network_Agent
 
 
 # Getting the necassary files through glob
@@ -37,34 +34,70 @@ except IndexError:
 # Importing the carla API Classes.
 import carla
 
+## GLOBAL VARIABLES
+very_start = time.time()
+
+# The frame dimesions.
+IM_WIDTH = 500
+IM_HEIGHT = 500
+
+# The minibatch size
+minibatch_size = 16
+
+# Predictions size
+PREDICTION_BATCH_SIZE = 1
+
+# The size of the training batch.
+TRAINING_BATCH_SIZE = minibatch_size // 4
+
+# CNN archietecture
+MODEL_NAME = "VGG16_GlobalMax2DPool"
+
+# Lowest possible reward
+MIN_REWARD = - 100 
+
+# The number of episodes (NOT STEPS)
+EPISODES = 500
+
+# The discount rate from the bellman equation
+DISCOUNT = 0.997
+
+# Whether or not we will use the network
+# The probability of using the network increases over time
+# However it won't go below 0.001
+epsilon = 1
+EPSILON_DECAY = 0.997
+MIN_EPSILON = 0.001
+
+# Get rewards every
+GET_REWARD_STATS_EVERY = 5
+
 
 if __name__ == '__main__':
 
     # For stats
     ep_rewards = []
     ep_rewards.append(MIN_REWARD) # Starting out with a low reward
+    full_stat = []
+    
+    # The head
+    full_stat.append(['average_reward','Min_reward', 'max_reward', 'epsilon'])
 
     # For more repetitive results
-    random.seed(1)
-    np.random.seed(1)
-    tf.random.set_seed(1) #https://www.tensorflow.org/versions/r2.0/api_docs/python/tf/random/set_seed
+    random.seed(40)
+    np.random.seed(40)
+    tf.random.set_seed(40) #https://www.tensorflow.org/versions/r2.0/api_docs/python/tf/random/set_seed
 
-    # Memory fraction, used mostly when training multiple agents #----------------
-    ##gpu_options = tf.compat.v1.GPUOptions(per_process_gpu_memory_fraction = MEMORY_FRACTION)
-    ##configuration = tf.compat.v1.ConfigProto(gpu_options=gpu_options)
-    ##backend(config = configuration)
     gpus = tf.config.experimental.list_physical_devices('GPU')
     if gpus:
       try:
-        tf.config.experimental.set_virtual_device_configuration(gpus[0], [tf.config.experimental.VirtualDeviceConfiguration(memory_limit= 1024*3)])
+        tf.config.experimental.set_virtual_device_configuration(gpus[0], [tf.config.experimental.VirtualDeviceConfiguration(memory_limit= 1024*2)])
       except RuntimeError as e:
         print(e)
-    
-    
 
     # Create models folder
     if not os.path.isdir('models'):
-        os.makedirs('AI_models')
+        os.makedirs('models')
 
     # Create agent and environment
     agent = Deep_Cue_Network_Agent()
@@ -160,16 +193,22 @@ if __name__ == '__main__':
                 # Making use of this update.
                 agent_stats = [average_reward,min_reward, max_reward, epsilon]
                 
-                # add to the table.
-                df[str(ID)] = agent_stats
+                print()
+                print("---------------------------")
+                print("episode",episode)
+                print("average_reward:min_reward:max_reward:epsilon")
+                # Print stats.
+                print(agent_stats)
+                print("---------------------------")
+                print()
+                full_stat.append(agent_stats)
                 
                 # Move on to the next.
-                ID += 1
                 
 
                 # Save model, but only when min reward is greater or equal a set value
                 if min_reward >= MIN_REWARD:
-                    agent.model.save(f'models/{MODEL_NAME}__{max_reward:_>8.2f}max_{average_reward:_>8.2f}avg_{min_reward:_>7.2f}min__{int(time.time())}.model')                 
+                    agent.model.save(f'models/{MODEL_NAME}__{max_reward:_>10.2f}max_{average_reward:_>10.2f}avg_{min_reward:_>7.2f}min_{EPISODES:_>4.0f}episodes__{int(time.time())}.model')                 
                     
             # Decay epsilon
             if epsilon > MIN_EPSILON:
@@ -183,3 +222,25 @@ if __name__ == '__main__':
     agent.terminate = True
     trainer_thread.join() 
     agent.model.save(f'models/{MODEL_NAME}__{int(time.time())}.model')  
+    
+    # Time at the end of the script
+    very_end = time.time()
+    
+    # The total time needed for the script to run
+    total_time_from_start_to_finish = very_end - very_start
+    
+    from pprint import pprint # Making it look pretty.
+    
+    print()
+    pprint(full_stat) # Displaying to console.
+    
+    print()
+    print()
+    total_time_from_start_to_finish = total_time_from_start_to_finish /(60*60)
+    print("Time for the whole script to run is : ",total_time_from_start_to_finish)
+    
+    # Transfer the list of lists to pandas dataframe.
+    df = pd.DataFrame(full_stat[1:], columns=full_stat[0])
+    
+    # Save the df
+    df.to_csv(f'Carla_Metrics_AccEpsilon__{int(time.time())}.csv')
