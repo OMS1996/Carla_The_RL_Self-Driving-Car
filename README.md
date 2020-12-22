@@ -94,12 +94,12 @@ Following are the list of some popular blogging platforms and their RSS feed url
 
 | Name | Feed URL | Comments 
 |--------|--------|--------
-| [Udacity](https://dev.to/) | `https://dev.to/feed/username` | Replace username with your own username 
-| [](https://wordpress.org/) | `https://www.example.com/feed/` | Replace with your own blog url 
-| [Medium](https://medium.com/) | `https://medium.com/feed/@username` | Replace @username with your Medium username 
-| [Stackoverflow](https://stackoverflow.com/) | `https://stackoverflow.com/feeds/user/userid` (https://meta.stackexchange.com/questions/98771/what-is-my-user-id/111130#111130) | https://stackoverflow.com/feeds/user/5283532 |
-| [StackExchange](https://stackexchange.com/) | `https://subdomain.stackexchange.com/feeds/user/userid` (https://meta.stackexchange.com/questions/98771/what-is-my-user-id/111130#111130) and sub-domain | https://devops.stackexchange.com/feeds/user/15 |
-| [Ghost](https://ghost.org/) | `https://www.example.com/rss/` | Replace with your own blog url 
+| [Udacity](https://www.udacity.com/course/reinforcement-learning--ud600) | `https://github.com/udacity/deep-reinforcement-learning` | I have learned a great deal from Udacity 
+| [Deep Learning Illustrated]() | `https://www.udacity.com/course/reinforcement-learning--ud600` | Replace with your own blog url 
+| [Introduction to Reinforcement learning](https://medium.com/) | `https://medium.com/feed/@username` | Replace @username with your Medium username 
+| [Stanford](https://stackoverflow.com/) | `https://stackoverflow.com/feeds/user/userid` (https://meta.stackexchange.com/questions/98771/what-is-my-user-id/111130#111130) | https://stackoverflow.com/feeds/user/5283532 |
+| [Unity ML-agents](https://stackexchange.com/) | `https://subdomain.stackexchange.com/feeds/user/userid` (https://meta.stackexchange.com/questions/98771/what-is-my-user-id/111130#111130) and sub-domain | https://devops.stackexchange.com/feeds/user/15 |
+| [Grokking deep Reinforcement learning](https://ghost.org/) | `https://www.example.com/rss/` | Replace with your own blog url 
 | [Drupal](https://www.drupal.org/) | `https://www.example.com/rss.xml` | Replace with your own blog url 
 | [Youtube Playlists](https://www.youtube.com) | `https://www.youtube.com/feeds/videos.xml?playlist_id=playlistId` | Replace `playlistId` with your own Youtube playlist id | https://www.youtube.com/feeds/videos.xml?playlist_id=PLJNqgDLpd5E69Kc664st4j7727sbzyx0X |
 | [Youtube Channel Video list](https://www.youtube.com) |  `https://www.youtube.com/feeds/videos.xml?channel_id=channelId` | Replace `channelId` with your own Youtube channel id | https://www.youtube.com/feeds/videos.xml?channel_id=UCDCHcqyeQgJ-jVSd6VJkbCw |
