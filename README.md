@@ -1,6 +1,5 @@
 # Carla the Reinforcement Self-Driving-Car (Version Morra)
-<p>In this project I aim to create a self-driving car that uses a reinforcement learning approach to navigate in an open-source simulator for autonomous driving research called Carla. The data that the car will use as to guide its decision is image data in the `RGB` format and `collision` data. </p>
-For more information about carla please visit the following Links:
+<p>In this project I aim to create a self-driving car that uses a reinforcement learning approach to navigate in an open-source simulator for autonomous driving research called Carla. The data that the car will use as to guide its decision is image data in the `RGB` format and `collision` data. For more information about carla please visit the following Links:</p>
 - https://carla.org/
 - https://github.com/carla-simulator/carla
 ![preview](https://github.com/OMS1996/Carla_The_RL_Self-Driving-Car/blob/main/Images/carla_desktop0.PNG?raw=true)
