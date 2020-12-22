@@ -119,8 +119,8 @@ Following are the list of some popular blogging platforms and their RSS feed url
 ### My Github account
 * [My own GitHub profile readme](https://github.com/OMS1996) 
 
-### Liked it?
-Hope you liked this project, don't forget to give it a star ⭐
+### How to contribute?
+Make a pullrequest.
 
 
 
