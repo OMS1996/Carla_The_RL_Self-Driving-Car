@@ -96,8 +96,7 @@ Following are some the sources that I used some are more important than others, 
 | Name | Comments
 |--------|--------
 | [Udacity Deep reinforcement learning](https://www.udacity.com/course/reinforcement-learning--ud600) | `https://github.com/udacity/deep-reinforcement-learning` 
-| [Human-level control through deep reinforcement
-learning](http://files.davidqiu.com//research/nature14236.pdf) | `http://files.davidqiu.com//research/nature14236.pdf` | http://files.davidqiu.com//research/nature14236.pdf
+| [Human-level control through deep reinforcement learning](http://files.davidqiu.com//research/nature14236.pdf) | `http://files.davidqiu.com//research/nature14236.pdf` | http://files.davidqiu.com//research/nature14236.pdf
 | [Issues in Using Function Approximation for Reinforcement Learning](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.73.3097&rep=rep1&type=pdf) | `http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.73.3097&rep=rep1&type=pdf` 
 | [Deep Learning Illustrated](https://www.amazon.com/Deep-Learning-Illustrated-Intelligence-Addison-Wesley/dp/0135116694) | `https://www.amazon.com/Deep-Learning-Illustrated-Intelligence-Addison-Wesley/dp/0135116694` 
 | [Introduction to Reinforcement learning An Introduction](http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.32.7692) | `http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.32.7692` 
