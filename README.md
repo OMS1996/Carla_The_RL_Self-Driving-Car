@@ -79,7 +79,28 @@ jobs:
   ![advanced](https://user-images.githubusercontent.com/8397274/88197889-b727ff80-cc60-11ea-8e4a-b1fbd8dd9d06.png)
 </details>
 
-### Popular Sources 
+### Examples 
+* [My own GitHub profile readme](https://github.com/OMS1996) 
+
+### Demo video
+Here is the first few minutes of the training process for self driving car.
+Please see the [video](https://www.youtube.com/watch?v=oAbDeb887_U) by [@OMS1996](https://github.com/OMS1996).
+
+#### Potential improvements.
+- [ ] Incoporate dynamic weather for a wider range of data. ( Level: Easy)
+- [ ] Implement prioritized experience replay ( Level: Medium)
+- [ ] Create a perception system (Level: Hard)
+- [ ] Attempt an improved DDQN
+- [ ] Implement PPO 
+- [ ] Implement A3C
+- [ ] Create a model based self-driving car (Level: Hard)
+- [ ] Combine RL + Rule based machine learning for self-driving car (level: Very hard)
+- [ ] Use imitation learning
+
+### Bugs
+If you are experiencing any bugs, please email me at omarmoh.said@yahoo.com
+
+### Resources
 Following are the list of some popular blogging platforms and their RSS feed urls:
 
 | Name | Feed URL | Comments | Example |
@@ -100,27 +121,10 @@ Following are the list of some popular blogging platforms and their RSS feed url
 | [Analytics India Magazine](https://analyticsindiamag.com/) | `https://analyticsindiamag.com/author/author_name/feed/` | Replace `author_name` with your name | https://analyticsindiamag.com/author/kaustubhgupta1828gmail-com/feed/ |
 | [Feedburner](https://feedburner.com/) | `https://feeds.feedburner.com/feed_address` | Replace `feed_address` with your Feedburner feed address | https://feeds.feedburner.com/darkwood-fr/blog |
 
-### Examples 
-* [My own GitHub profile readme](https://github.com/OMS1996) 
-
-### Demo video
-Here is the first few minutes of the training process for self driving car.
-Please see the [video](https://www.youtube.com/watch?v=oAbDeb887_U) by [@OMS1996](https://github.com/OMS1996).
-
-### Contributing
-Please see [CONTRIBUTING.md](CONTRIBUTING.md) for getting started with the contribution. Make sure that you follow [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) while contributing and engaging in the discussions. **When contributing, please first discuss the change you wish to make via an issue on this repository before making the actual change**.
-
-#### ToDo
-- [ ] Add more sources
-- [ ] Fix bugs if any
-
-### Bugs
-If you are experiencing any bugs, don’t forget to open a [new issue](https://github.com/gautamkrishnar/blog-post-workflow/issues/new).
-
-### Thanks
-- Thanks to all the **2K+✨** users of this workflow
-- Thanks to all the [contributors](https://github.com/gautamkrishnar/blog-post-workflow/graphs/contributors)
-- Thanks to [@codeSTACKr](https://github.com/codeSTACKr) for [this](https://www.youtube.com/watch?v=ECuqb5Tv9qI) amazing video
+### Thanks 
+- Director of my program Professor.Andy Catlin
+- Dean Paul Russo
+- My supervisor Dr. Wonjun
 
 ### Liked it?
 Hope you liked this project, don't forget to give it a star ⭐
