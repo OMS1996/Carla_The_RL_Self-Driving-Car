@@ -1,4 +1,4 @@
-# Carla the Reinforcement Self-Driving-Car (Version Morra)
+# Carla the Reinforcement Self-Driving-Car (Version Morra).
 <p>In this project I aim to create a self-driving car that uses a reinforcement learning approach to navigate in an open-source simulator for autonomous driving research called Carla. The data that the car will use as to guide its decision is image data in the `RGB` format and `collision` data. For more information about carla please visit the following Links:</p>
 
 - https://carla.org/
@@ -7,11 +7,11 @@
 
 ![preview](https://github.com/OMS1996/Carla_The_RL_Self-Driving-Car/blob/main/Images/carla_desktop0.PNG?raw=true)
 
-# Motivation
+# Motivation.
 <p> Created this project as part of my Master's Final project for the Year 2020 and a passion for reinforcement learning. </p>
 This video from openAI really inspired me: https://www.youtube.com/watch?v=kopoLzvh5jY
 
-### How to use this repo
+### How to use this repo.
 - Download anaconda
 - Create a virtual environment: conda create -n envname python=3.7 anaconda
 - pip install requirements.txt
@@ -25,21 +25,22 @@ This video from openAI really inspired me: https://www.youtube.com/watch?v=kopoL
 - Powerpoint presentation.
 - Data and Graphs.
 - A Readme with detailed instructions.
+- Documentation.
 
-### Carla
+### Carla environment. 
 
 ![preview](https://github.com/OMS1996/Carla_The_RL_Self-Driving-Car/blob/main/Images/carla_look1.PNG?raw=true)
 
 This is how carla looks like from the inside. It is an extremely beautiful environment.
 
-### Reinforcement Learning 
+### Reinforcement Learning.
 The main idea in RL is that you have an agent which is an "intelligent being" the interacts with an environment by means of taking actions and then receives feedback from the environment to indicate whether the agent has done well or bad. Like raising a  child , if he does well in school you encourage(REWARD) him if he doesn’t then you perhaps ground him (Penalize). and your child starts to adjust his behavior accordingly.
 
 Note that a +ve reward indicates a reward and a -ve reward indicates penalty.
 
 ![preview](https://github.com/OMS1996/Carla_The_RL_Self-Driving-Car/blob/main/Images/rl_env1.PNG)
 
-# DQN
+# DQN.
 How the DQN algorithm generally looks like is as follows: courtesy of @deeplizard's website: https://deeplizard.com/learn/video/0bt0SjbS3xc
 <!-- BLOG-POST-LIST:START -->
 <!-- BLOG-POST-LIST:END -->
@@ -63,7 +64,7 @@ How the DQN algorithm generally looks like is as follows: courtesy of @deeplizar
 ```
 
 
-### Demo video ( First few episodes )
+### Demo video ( First few episodes ).
 Here is the first few minutes of the training process for self driving car.
 Please see the [video](https://www.youtube.com/watch?v=oAbDeb887_U) by [@OMS1996](https://github.com/OMS1996).
 As you can see at the beginning it is not very smart but slowly but surely it begins to get smarter and smarter.
@@ -85,16 +86,16 @@ As you can see at the beginning it is not very smart but slowly but surely it be
 - [ ] Combine RL + Rule based machine learning for self-driving car (level: Very hard)
 - [ ] Use imitation learning
 
-### Bugs
+### Bugs.
 If you are experiencing any bugs, please email me at omarmoh.said@yahoo.com
 
-### Resources
+### Resources.
 Following are the list of some popular blogging platforms and their RSS feed urls:
 
 | Name | Feed URL | Comments 
 |--------|--------|--------
-| [Dev.to](https://dev.to/) | `https://dev.to/feed/username` | Replace username with your own username 
-| [Wordpress](https://wordpress.org/) | `https://www.example.com/feed/` | Replace with your own blog url 
+| [Udacity](https://dev.to/) | `https://dev.to/feed/username` | Replace username with your own username 
+| [](https://wordpress.org/) | `https://www.example.com/feed/` | Replace with your own blog url 
 | [Medium](https://medium.com/) | `https://medium.com/feed/@username` | Replace @username with your Medium username 
 | [Stackoverflow](https://stackoverflow.com/) | `https://stackoverflow.com/feeds/user/userid` (https://meta.stackexchange.com/questions/98771/what-is-my-user-id/111130#111130) | https://stackoverflow.com/feeds/user/5283532 |
 | [StackExchange](https://stackexchange.com/) | `https://subdomain.stackexchange.com/feeds/user/userid` (https://meta.stackexchange.com/questions/98771/what-is-my-user-id/111130#111130) and sub-domain | https://devops.stackexchange.com/feeds/user/15 |
