@@ -4,17 +4,16 @@ In this project I aim to create a self-driving car that uses a reinforcement lea
 For more information about carla please visit the following Links:
 - https://carla.org/
 - https://github.com/carla-simulator/carla
-
-
 ![preview](https://github.com/OMS1996/Carla_The_RL_Self-Driving-Car/blob/main/Images/carla_desktop0.PNG?raw=true)
 
 # Motivation
 Created this project as part of my Master's thesis for the Year 2020
 
-### How to use
-- Go to your repository
-- Add the following section to your **README.md** file, you can give whatever title you want. Just make sure that you use `<!-- BLOG-POST-LIST:START --><!-- BLOG-POST-LIST:END -->` in your readme. The workflow will replace this comment with the actual blog post list: 
-```markdown
+### How to use this repo
+- Download anaconda
+- Create a virtual environment: conda create -n envname python=3.7 anaconda
+- pip install requirements.txt
+- Once everything is setup you must ensure that you have that you have CarlaUE4.exe running. or if you are on linux run the command ./CarlaUE4.sh
 
 
 
