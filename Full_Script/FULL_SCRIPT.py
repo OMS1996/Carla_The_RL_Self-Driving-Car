@@ -218,18 +218,13 @@ class Deep_Cue_Network_Agent:
         # The size of the replay memory.
         self.REPLAY_MEMORY_SIZE = 4_000
 
-        # Q - Learning specific variable
-        # The replay memory, using a deque (A queue that can be used from both sides).
-        self.replay_memory = deque(maxlen=self.REPLAY_MEMORY_SIZE)
+        # Prioritized Experience Replay
+        self.replay_buffer = PrioritizedReplayBuffer(max_size=self.REPLAY_MEMORY_SIZE)
 
         # The minimum replay memory size.
         self.MIN_REPLAY_MEMORY_SIZE = 1_000
 
         # State and network attributes
-        # Tracker
-        # termination boolean
-        # Last episode that was logged in
-        # Training flag
         self.target_update_counter = 0  # Update tracker
         self.terminate = False  # is it terminal state
         self.last_logged_episode = 0
@@ -240,7 +235,6 @@ class Deep_Cue_Network_Agent:
 
     def build_model(self):
         # Creating the VGG16
-        # Try with pre-trained network
         base_model = VGG16(include_top=False, weights=None, input_shape=(IM_HEIGHT, IM_WIDTH, 3))
 
         # getting the output 
@@ -260,68 +254,52 @@ class Deep_Cue_Network_Agent:
 
     def update_replay_memory(self, transition):
         '''
-         Function updates replay memory with the new frames.
-         Input: transition -> Tuple :: (current_state, action, reward, new_state, done)
-         Output: None
+        Function updates replay memory with the new frames.
+        Input: transition -> Tuple :: (current_state, action, reward, new_state, done)
         '''
-        self.replay_memory.append(transition)
+        self.replay_buffer.add(*transition)
 
     def train(self):
-        if len(self.replay_memory) < self.MIN_REPLAY_MEMORY_SIZE:
+        if len(self.replay_buffer.buffer) < self.MIN_REPLAY_MEMORY_SIZE:
             return
 
         logger.info("Training started!")
 
-        # Getting a random sample from the replay memory relative to the minibatch size assigned.
-        minibatch = random.sample(self.replay_memory, minibatch_size)
+        # Sample from the prioritized replay buffer
+        minibatch, indices, weights = self.replay_buffer.sample(minibatch_size)
 
-        # CURRENT Q - VALUES
-        # Getting the current states from tuple which is at the 0th index
-        # normalizing the frame and storing it in current states
         current_states = np.array([transition[0] for transition in minibatch])/255
+        new_states = np.array([transition[3] for transition in minibatch])/255
 
-        # Using them to predict
         current_qs_list = self.model.predict(current_states, PREDICTION_BATCH_SIZE)
+        future_qs_list = self.target_model.predict(new_states, PREDICTION_BATCH_SIZE)
 
-        # New Q - values
-        # Getting the new state which is at the 3rd index
-        # Normalize the frames
-        new_current_states = np.array([transition[3] for transition in minibatch])/255
-        # FUTURE Q_LIST
-        future_qs_list = self.target_model.predict(new_current_states, PREDICTION_BATCH_SIZE)
-
-        # Change it into a Supervised learning problem, In some sense
         X = []
         y = []
+        td_errors = []
 
-        # Looping through the minibatch
-        # Updating the q value if it is not over
         for index, (current_state, action, reward, new_state, done) in enumerate(minibatch):
             if not done:
-                # The equation for updating the q-value
-                new_q = reward + DISCOUNT * np.max(future_qs_list[index])
+                max_future_q = np.max(future_qs_list[index])
+                new_q = reward + DISCOUNT * max_future_q
             else:
                 new_q = reward
 
-            # Update the current 
             current_qs = current_qs_list[index]
             current_qs[action] = new_q
 
-            # X and Y like supervised learning.
             X.append(current_state)
             y.append(current_qs)
+            td_errors.append(abs(new_q - current_qs_list[index][action]))
 
-        # preparing the tensorboard
-        log_this_step = False
+        self.replay_buffer.update_priorities(indices, td_errors)
+
+        self.model.fit(np.array(X)/255, np.array(y), batch_size=TRAINING_BATCH_SIZE, 
+                       verbose=0, shuffle=False, sample_weight=weights)
+
         if current_episode_ptr > self.last_logged_episode:
-            log_this_step = True
-        self.last_log_episode = current_episode_ptr
-
-        # Fitting the model
-        self.model.fit(np.array(X)/255, np.array(y), batch_size=TRAINING_BATCH_SIZE, verbose=0, shuffle=False)
-
-        if log_this_step:
             self.target_update_counter += 1
+            self.last_logged_episode = current_episode_ptr
 
         if self.target_update_counter > self.UPDATE_TARGET_EVERY:
             self.target_model.set_weights(self.model.get_weights())
@@ -347,6 +325,50 @@ class Deep_Cue_Network_Agent:
                 return
             self.train()
             time.sleep(0.02)
+
+
+class PrioritizedReplayBuffer:
+    def __init__(self, max_size, alpha=0.6, beta=0.4):
+        self.max_size = max_size
+        self.buffer = []
+        self.priorities = np.zeros((max_size,), dtype=np.float32)
+        self.position = 0
+        self.alpha = alpha
+        self.beta = beta
+        self.epsilon = 1e-5
+
+    def add(self, state, action, reward, next_state, done):
+        max_priority = self.priorities.max() if self.buffer else 1.0
+        
+        if len(self.buffer) < self.max_size:
+            self.buffer.append((state, action, reward, next_state, done))
+        else:
+            self.buffer[self.position] = (state, action, reward, next_state, done)
+        
+        self.priorities[self.position] = max_priority
+        self.position = (self.position + 1) % self.max_size
+
+    def sample(self, batch_size):
+        if len(self.buffer) == self.max_size:
+            priorities = self.priorities
+        else:
+            priorities = self.priorities[:self.position]
+        
+        probabilities = priorities ** self.alpha
+        probabilities /= probabilities.sum()
+        
+        indices = np.random.choice(len(self.buffer), batch_size, p=probabilities)
+        samples = [self.buffer[idx] for idx in indices]
+        
+        weights = (len(self.buffer) * probabilities[indices]) ** (-self.beta)
+        weights /= weights.max()
+        
+        return samples, indices, weights
+
+    def update_priorities(self, indices, priorities):
+        for idx, priority in zip(indices, priorities):
+            self.priorities[idx] = priority + self.epsilon
+
 
 def setup_gpu():
     gpus = tf.config.experimental.list_physical_devices('GPU')
@@ -455,6 +477,11 @@ def main():
         if not episode % GET_REWARD_STATS_EVERY or episode == 1:
             stats = calculate_and_log_stats(ep_rewards, epsilon)
             full_stat.append(stats)
+
+            # Add logging for prioritized replay performance
+            if hasattr(agent.replay_buffer, 'priorities'):
+                avg_priority = np.mean(agent.replay_buffer.priorities)
+                logger.info(f"Average priority in replay buffer: {avg_priority:.4f}")
 
             if stats[1] >= MIN_REWARD:
                 save_model(agent, stats, episode)
