@@ -112,10 +112,6 @@ instructions
 | [Helpful Github Repo](https://github.com/Parsa33033/Deep-Reinforcement-Learning-DQN) | `https://github.com/Parsa33033/Deep-Reinforcement-Learning-DQN` 
 | [Simple Reinforcement Learning with Tensorflow Part 0: Q-Learning with Tables and Neural Networks](https://medium.com/emergent-future/simple-reinforcement-learning-with-tensorflow-part-0-q-learning-with-tables-and-neural-networks-d195264329d0) | `https://medium.com/emergent-future/simple-reinforcement-learning-with-tensorflow-part-0-q-learning-with-tables-and-neural-networks-d195264329d0` 
 
-### Thanks 
-- Director of my program Professor.Andy Catlin
-- Dean Paul Russo
-- My supervisor Dr. Wonjun
 
 
 ### My Github account
